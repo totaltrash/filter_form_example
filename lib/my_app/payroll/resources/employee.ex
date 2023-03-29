@@ -8,6 +8,10 @@ defmodule MyApp.Payroll.Employee do
 
   actions do
     defaults([:read, :update, :destroy])
+
+    read :read_all do
+      prepare build(load: [:department], sort: [:employee_id])
+    end
   end
 
   attributes do
@@ -39,5 +43,6 @@ defmodule MyApp.Payroll.Employee do
   code_interface do
     define_for MyApp.Payroll
     define :create
+    define :read_all
   end
 end

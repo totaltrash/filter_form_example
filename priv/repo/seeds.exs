@@ -59,7 +59,7 @@ sample_data
     position: Enum.at(row, 2),
     start_date: format_date.(Enum.at(row, 5)),
     end_date: format_date.(Enum.at(row, 9)),
-    salary: String.replace(Enum.at(row, 6), ~r/\D/, ""),
+    salary: String.replace(Enum.at(row, 6), ~r/\D/, "") <> ".00",
     department_id: Map.get(department_map, Enum.at(row, 3))
   })
 end)
