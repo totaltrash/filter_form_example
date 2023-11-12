@@ -63,12 +63,16 @@ defmodule MyAppWeb.FilterFormLive do
           <.input type="select" field={@component[:operator]} options={[And: "and", Or: "or"]} />
         </div>
         <div>
-          <.button phx-click="add_filter_group" phx-value-component-id={@component.id} type="button">
+          <.button
+            phx-click="add_filter_group"
+            phx-value-component-id={@component.source.id}
+            type="button"
+          >
             Add Group
           </.button>
           <.button
             phx-click="add_filter_predicate"
-            phx-value-component-id={@component.id}
+            phx-value-component-id={@component.source.id}
             type="button"
           >
             Add Predicate
@@ -83,7 +87,7 @@ defmodule MyAppWeb.FilterFormLive do
           <% else %>
             <.button
               phx-click="remove_filter_component"
-              phx-value-component-id={@component.id}
+              phx-value-component-id={@component.source.id}
               type="button"
             >
               Remove Group
@@ -106,7 +110,7 @@ defmodule MyAppWeb.FilterFormLive do
       <.input field={@component[:value]} />
       <.button
         phx-click="remove_filter_component"
-        phx-value-component-id={@component.id}
+        phx-value-component-id={@component.source.id}
         type="button"
       >
         Remove
